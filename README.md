@@ -1,25 +1,15 @@
 # ZQM Public Tools
 
-Curated, sanitized Windows security tooling surfaced for public review.
+Curated, reviewed PowerShell utilities for endpoint visibility and baseline integrity reporting.
+These scripts are safe for SOC/MSP evaluation; they contain no organization-specific paths, secrets, or internal host data.
 
-## Included tooling
+## Included
 
-- `scripts/` — reviewed PowerShell utilities suitable for endpoint visibility
-- `README.md` — how each tool maps to CIS/Windows security controls
-- `integration.md` — deploy into SOC/MSP environments
+- `scripts/Get-SystemReport.ps1` — system snapshot: OS, boot, hash, key services
+- `scripts/Invoke-AttestationBaseline.ps1` — lightweight baseline checks (DEFCON-style)
+- `docs/ControlMapping.md` — maps script outputs to CIS/Windows security controls
+- `INTEGRATION.md` — SOC/MSP integration notes
 
-## What’s excluded
+## Related
 
-- Internal node-specific configuration
-- LAN hostnames / internal IP space
-- Bug-bounty dogfood inventory
-- Keys, tokens, and credential material
-
-## Relationship to upstream
-
-This repo exists so public reviewers can evaluate methodology without exposing operational internals. Full commercial product lives at `ZQM-Computing/zqm-attestation-toolkit`.
-
-License
-
-- Public samples: MIT
-- Upstream commercial terms: see `ZQM-Computing/zqm-attestation-toolkit` COMMERCIAL.md
+Full commercial product: `ZQM-Computing/zqm-attestation-toolkit`
