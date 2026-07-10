@@ -1,15 +1,14 @@
 # ZQM Public Tools
 
 Curated, reviewed PowerShell utilities for endpoint visibility and baseline integrity reporting.
-These scripts are safe for SOC/MSP evaluation; they contain no organization-specific paths, secrets, or internal host data.
 
-## Included
+Files
+- `scripts/Get-SystemReport.ps1` — generic endpoint snapshot
+- `scripts/Invoke-AttestationBaseline.ps1` — lightweight control checks
+- `docs/ControlMapping.md` — maps outputs to CIS/Windows control concepts
+- `INTEGRATION.md` — deployment notes for SOC/MSP review
 
-- `scripts/Get-SystemReport.ps1` — system snapshot: OS, boot, hash, key services
-- `scripts/Invoke-AttestationBaseline.ps1` — lightweight baseline checks (DEFCON-style)
-- `docs/ControlMapping.md` — maps script outputs to CIS/Windows security controls
-- `INTEGRATION.md` — SOC/MSP integration notes
-
-## Related
-
-Full commercial product: `ZQM-Computing/zqm-attestation-toolkit`
+Guidelines
+- No secrets, keys, or user-data collection.
+- No org-specific paths or host references.
+- Use in isolated test endpoints first.
