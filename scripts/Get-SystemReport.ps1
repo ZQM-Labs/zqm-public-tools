@@ -13,11 +13,34 @@ param(
   [string]$OutFile
 )
 
-$report = [ordered]@{
+$osInfo = Get-CimInstance Win32_OperatingSystem
+if ($osInfo) {
+  $osCaption = $osInfo.Caption
+  $osVersion = $osInfo.Version
+  $osBuild = $osInfo.BuildNumber
+} else {
+  $osCaption = 'Unknown'
+  $osVersion = 'Unknown'
+  $osBuild = 'Unknown'
+}
+
+$boot = 'Unknown'
+try {
+  $secureBoot = Confirm-SecureBootUEFI -ErrorAction Stop
+  if ($secureBoot) {
+    $boot = 'UEFI+SecureBoot'
+  }
+} catch {
+  $boot = 'BIOS/Legacy/Unknown'
+}
+
+$serviceCount = (Get-Service | Where-Object { $_.Status -ne 'Stopped' }).Count
+
+$report = New-Object PSObject -Property @{
   host     = $env:COMPUTERNAME
-  os       = (Get-CimInstance Win32_OperatingSystem) | Select-Object Caption, Version, BuildNumber
-  boot     = (Confirm-SecureBootUEFI -ErrorAction SilentlyContinue) ? 'UEFI+SecureBoot' : 'BIOS/Legacy/Unknown'
-  services = (Get-Service | Where-Object { $_.Status -ne 'Stopped' }).Count
+  os       = New-Object PSObject -Property @{ Caption = $osCaption; Version = $osVersion; BuildNumber = $osBuild }
+  boot     = $boot
+  services = $serviceCount
 }
 
 if ($OutFile) {

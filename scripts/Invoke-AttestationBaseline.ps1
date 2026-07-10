@@ -6,22 +6,27 @@ Lightweight attestation baseline checks.
 Runs generic control checks and returns pass/fail counts.
 #>
 
-$checks = [
-  'SecureBootEnabled',
-  'WinDefenderAntispySignatureLastUpdated',
-  'FirewallEnabled',
-  'AutoUpdateEnabled'
-]
+$results = [System.Collections.Generic.List[PSObject]]::new()
 
-$results = foreach ($c in $checks) {
+$checks = @{
+  'SecureBootEnabled'                         = { try { Confirm-SecureBootUEFI } catch { 'UNKNOWN' } }
+  'WinDefenderAntispySignatureLastUpdated'    = { try { $s = Get-MpComputerStatus; if ($null -ne $s.AntispywareSignatureLastUpdated) { $s.AntispywareSignatureLastUpdated } else { 'UNKNOWN' } } catch { 'UNKNOWN' } }
+  'FirewallEnabled'                           = { try { (Get-NetFirewallProfile | Where-Object { $_.Enabled -eq $true }).Count -gt 0 } catch { 'UNKNOWN' } }
+  'AutoUpdateEnabled'                         = { try { (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update' -ErrorAction SilentlyContinue).AUOptions -ne $null } catch { 'UNKNOWN' } }
+}
+
+foreach ($c in $checks.Keys) {
+  $detail = 'UNKNOWN'
+  $status = 'UNKNOWN'
   try {
-    $r = Invoke-Expression $c -ErrorAction Stop
-    [pscustomobject]@{ control = $c; status = 'OK'; detail = $r }
+    $detail = & $checks[$c]
+    $status = 'OK'
   } catch {
-    [pscustomobject]@{ control = $c; status = 'UNKNOWN'; detail = $_.Exception.Message }
+    $detail = $_.Exception.Message
   }
+  $null = $results.Add((New-Object PSObject -Property @{ control = $c; status = $status; detail = $detail }))
 }
 
 $results | Format-Table -AutoSize
-$pass = ($results | Where-Object status -eq 'OK').Count
+$pass = ($results | Where-Object { $_.status -eq 'OK' }).Count
 Write-Host ("Baseline: {0}/{1} controls OK" -f $pass, $results.Count)
