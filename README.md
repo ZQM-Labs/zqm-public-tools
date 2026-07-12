@@ -1,14 +1,11 @@
-# ZQM Public Tools
+# ZQM-Computing public tools
 
-Curated, reviewed PowerShell utilities for endpoint visibility and baseline integrity reporting.
+Sanitized PowerShell helpers for Windows attestation. These scripts are the public surface of the ZQM attestation kit: no private paths, no secrets, no operational backdoors.
 
-Files
-- `scripts/Get-SystemReport.ps1` — generic endpoint snapshot
-- `scripts/Invoke-AttestationBaseline.ps1` — lightweight control checks
-- `docs/ControlMapping.md` — maps outputs to CIS/Windows control concepts
-- `INTEGRATION.md` — deployment notes for SOC/MSP review
+## Usage
 
-Guidelines
-- No secrets, keys, or user-data collection.
-- No org-specific paths or host references.
-- Use in isolated test endpoints first.
+PowerShell 5.1+ on Windows 10/11. Defaults are repo-root-relative. Review before changing execution policy.
+
+## Contact
+
+ZQM Computing — zqmcomputing@gmail.com
