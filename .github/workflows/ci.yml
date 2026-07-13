@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  lint:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          if (-not (Get-Module -ListAvailable PSScriptAnalyzer)) {
+            Install-Module -Force -Scope CurrentUser PSScriptAnalyzer
+          }
+          $files = Get-ChildItem -Recurse -Include *.ps1,*.psm1,*.psd1
+          if ($files) {
+            Invoke-ScriptAnalyzer -Path $files -Severity Error | Format-Table -AutoSize
+          } else {
+            Write-Host "No PowerShell files found."
+          }
