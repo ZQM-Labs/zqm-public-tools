@@ -4,7 +4,7 @@
 # Procurement: jsonschema https://github.com/python-jsonschema/jsonschema MIT
 # Procurement: rich https://github.com/Textualize/rich MIT
 # Procurement: requests https://github.com/psf/requests Apache-2.0
-pytest>=8.3,<9.0
+pytest>=9.1.1,<10.0
 jsonschema>=4.26.0,<5.0
 rich>=15.0.0,<16.0
 requests>=2.34.2,<3.0
