@@ -6,5 +6,5 @@
 # Procurement: requests https://github.com/psf/requests Apache-2.0
 pytest>=8.3,<9.0
 jsonschema>=4.26.0,<5.0
-rich>=13.9,<14.0
+rich>=15.0.0,<16.0
 requests>=2.34.2,<3.0
