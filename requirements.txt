@@ -8,3 +8,5 @@ pytest>=9.1.1,<10.0
 jsonschema>=4.26.0,<5.0
 rich>=15.0.0,<16.0
 requests>=2.34.2,<3.0
+# Procurement: zqm-intel-platforms https://github.com/ZQM-Labs/zqm-intel-platforms MIT
+zqm-intel-platforms>=0.1.0
