@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+Python/bin/pip.exe.__script__.py
+Python/bin/pip3.exe.__script__.py
+scripts/fulfill_bot.py
+tests/conftest.py
+tests/test_smoke.py
+zqm_public_tools.egg-info/PKG-INFO
+zqm_public_tools.egg-info/SOURCES.txt
+zqm_public_tools.egg-info/dependency_links.txt
+zqm_public_tools.egg-info/requires.txt
+zqm_public_tools.egg-info/top_level.txt

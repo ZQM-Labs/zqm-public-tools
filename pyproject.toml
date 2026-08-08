@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zqm-public-tools"
+version = "0.1.0"
+description = "zqm-public-tools"
+readme = "README.md"
+license = {text = "MIT"}
+# authors = see repository metadata
+requires-python = ">=3.11"
+keywords = []
+dependencies = [
+    "zqm-intel-platforms>=0.1.0",
+]
+classifiers = ["Development Status :: 3 - Alpha", "Intended Audience :: Developers", "License :: OSI Approved :: MIT License", "Programming Language :: Python :: 3.11"]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+ignore = ["Python", "pythoncore-3.14-64", "samples", "data"]
+
+[project.urls]
+Homepage = "https://github.com/ZQM-Labs/zqm-public-tools"
+Repository = "https://github.com/ZQM-Labs/zqm-public-tools.git"
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -1,3 +1,20 @@
+Metadata-Version: 2.4
+Name: zqm-public-tools
+Version: 0.1.0
+Summary: zqm-public-tools
+License: MIT
+Project-URL: Homepage, https://github.com/ZQM-Labs/zqm-public-tools
+Project-URL: Repository, https://github.com/ZQM-Labs/zqm-public-tools.git
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: zqm-intel-platforms>=0.1.0
+Dynamic: license-file
+
 # zqm-public-tools
 
 Public PowerShell/Python tooling for Windows fleet attestation and system reporting.
@@ -49,11 +66,3 @@ MIT/Apache-2.0/BSD-3 unless otherwise noted.
 
 Alex Zelenski — zqmcomputing@gmail.com
 Brand: ZQM Computing / ZQM-Labs
-
-## Related Repositories
-
-- [ZQM-Labs/zqm-attestation-toolkit](https://github.com/ZQM-Labs/zqm-attestation-toolkit) — Windows attestation, BitLocker, TPM, DFIR, and AI integrity verification
-- [ZQM-Labs/pqc-readiness-toolkit](https://github.com/ZQM-Labs/pqc-readiness-toolkit) — post-quantum cryptography readiness for Windows compliance
-- [ZQM-Labs/zqm-security-policy](https://github.com/ZQM-Labs/zqm-security-policy) — CIS benchmarks, Windows hardening, and compliance runbooks
-- [ZQM-Labs/awesome-windows-attestation](https://github.com/ZQM-Labs/awesome-windows-attestation) — curated DFIR, BitLocker, TPM, and compliance resources
-- [ZQM-Computing/mesh-forensics](https://github.com/ZQM-Computing/mesh-forensics) — ZQM LAN evidence collection and incident response
