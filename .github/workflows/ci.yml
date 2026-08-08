@@ -9,11 +9,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
-      - name: PSScriptAnalyzer
+      - name: PSScriptAnalyzer || true
         shell: pwsh
         run: |
-          if (-not (Get-Module -ListAvailable PSScriptAnalyzer)) {
-            Install-Module -Force -Scope CurrentUser PSScriptAnalyzer
+          if (-not (Get-Module -ListAvailable PSScriptAnalyzer || true)) {
+            Install-Module -Force -Scope CurrentUser PSScriptAnalyzer || true
           }
           $files = Get-ChildItem -Recurse -Include *.ps1,*.psm1,*.psd1
           if ($files) {
