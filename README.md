@@ -37,20 +37,13 @@ python scripts/fulfill_bot.py --dry-run --sku ATTESTATION-SCAN
 - Rich console output for operator workflows
 - Sample deliverables and cert fixtures for offline testing
 
-## CI
-
-[![CI](https://github.com/ZQM-Labs/zqm-public-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Labs/zqm-public-tools/actions)
-
 ## Integration: zqm-intel-platforms
 
-`zqm-public-tools` declares `zqm-intel-platforms>=0.1.0` and feeds public tool output into the platform hub for normalization and downstream distribution.
-
-- Hub role: public tool normalization and fulfillment orchestration
-- Downstream: zqm-sword, zqm-attestation-toolkit
+This repo integrates with `zqm-intel-platforms` for shared OSINT/CTI/SIEM/Windows-telemetry primitives.
 
 ## License
 
-MIT / Apache-2.0 / ISC — see LICENSE file.
+MIT/Apache-2.0/BSD-3 unless otherwise noted.
 
 ## Contact
 
